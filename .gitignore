@@ -134,3 +134,28 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+# --- Football Squares extras ---
+
+# Next.js / Astro output
+.next/
+.out/
+dist/
+build/
+
+# Vercel & Netlify deploy metadata
+.vercel/
+.netlify/
+
+# Hardhat / Foundry artifacts & coverage
+artifacts/
+cache/
+coverage/
+
+# Environment secrets
+.env
+.env.*.local
+
+# OS / editor cruft
+.DS_Store
+.idea/
+.vscode/
