@@ -56,7 +56,7 @@ pnpm prisma db seed
 pnpm test
 
 
-App: http://localhost:3001
+App: http://localhost:3000
 
 GraphQL: http://localhost:4000/graphql
 
