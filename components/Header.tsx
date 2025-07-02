@@ -15,9 +15,9 @@ const Header = () => {
   };
 
   const menuItems = [
+    { label: 'Fantasy', href: '/fantasy' },
     { label: 'How To Play', href: '/how-to-play' },
     { label: 'My NFTs', href: '/my-nfts' },
-    { label: 'Fantasy', href: pathname === '/' ? '#fantasy' : '/fantasy' },
   ];
 
   return (

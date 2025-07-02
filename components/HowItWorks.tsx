@@ -32,6 +32,7 @@ const HowItWorks = () => {
           <p className="text-xl text-[#708090] max-w-2xl mx-auto">
             Get started with Football Squares in three simple steps
           </p>
+        
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

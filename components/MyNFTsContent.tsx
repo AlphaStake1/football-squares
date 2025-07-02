@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Palette, 
-  Sparkles, 
-  Trophy, 
-  Zap, 
-  Info, 
-  Plus, 
+import {
+  Palette,
+  Sparkles,
+  Trophy,
+  Zap,
+  Info,
+  Plus,
   Download,
   Share2,
   Eye,
@@ -23,7 +23,8 @@ import {
   ArrowRight,
   Grid3X3,
   Target,
-  Gift
+  Gift,
+  Flame
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
@@ -231,6 +232,58 @@ const MyNFTsContent = () => {
           </div>
         </div>
 
+        {/* What Are NFTs Link - Prominent Above the Fold */}
+        <div className="mb-16">
+          <Card className="bg-gradient-to-r from-[#004953] to-[#002244] border-0 text-white overflow-hidden relative shadow-2xl">
+            <div className="absolute inset-0 opacity-30" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
+            <CardContent className="relative z-10 p-8 lg:p-12">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="text-center lg:text-left">
+                  <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                    New to NFTs? Learn the Basics
+                  </h2>
+                  <p className="text-xl lg:text-2xl text-[#96abdc] mb-6">
+                    Discover how NFTs work, why they're valuable, and how Sol Incinerator can help manage your collection
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="bg-white text-[#004953] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    >
+                      <a href="/what-are-nfts">
+                        <Info className="w-6 h-6 mr-2" />
+                        What Are NFTs?
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex-shrink-0">
+                  <div className="w-48 h-48 bg-white/10 backdrop-blur-sm rounded-3xl p-6 flex items-center justify-center">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center animate-pulse">
+                        <Shield className="w-8 h-8" />
+                      </div>
+                      <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center animate-pulse delay-150">
+                        <Sparkles className="w-8 h-8" />
+                      </div>
+                      <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center animate-pulse delay-300">
+                        <Wallet className="w-8 h-8" />
+                      </div>
+                      <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center animate-pulse delay-500">
+                        <Flame className="w-8 h-8" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* How NFTs Work Demo */}
         <div className="bg-gradient-to-r from-[#002244] to-[#004953] rounded-2xl p-8 lg:p-12 text-white mb-16">
           <div className="text-center mb-8">
@@ -351,9 +404,11 @@ const MyNFTsContent = () => {
                     <Button className="bg-gradient-to-r from-[#ed5925] to-[#96abdc] text-white px-6 py-3 rounded-full font-bold hover:from-[#d14a1f] hover:to-[#7a95d1] transition-all duration-200">
                       Create First Marker
                     </Button>
-                    <Button variant="outline" className="px-6 py-3 rounded-full font-bold">
-                      Learn More
-                    </Button>
+                    <a href="/what-are-nfts">
+                      <Button variant="outline" className="px-6 py-3 rounded-full font-bold">
+                        Learn More
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -785,6 +840,11 @@ const MyNFTsContent = () => {
                     </AccordionItem>
                   ))}
                 </Accordion>
+                <div className="text-center mt-8">
+                  <a href="/what-are-nfts" className="text-[#ed5925] hover:underline font-bold">
+                    Learn more about NFTs
+                  </a>
+                </div>
               </div>
 
               {/* Getting Started CTA */}

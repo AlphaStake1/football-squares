@@ -1,36 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Play, Pause } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 const AdBanner = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  useEffect(() => {
-    if (!isPlaying) return;
-
-    const interval = setInterval(() => {
-      setIsExpanded(prev => !prev);
-    }, 4000); // Expand/contract every 4 seconds
-
-    return () => clearInterval(interval);
-  }, [isPlaying]);
-
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
 
   return (
     <section className="bg-[#002244] overflow-hidden">
-      <div 
-        className={`transition-all duration-1000 ease-in-out ${
-          isExpanded ? 'h-80' : 'h-32'
-        }`}
-      >
+      <div className="h-80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Video B-Roll Placeholder */}
+          <div className="flex items-center justify-center h-full">
+            {/* Video Section */}
             <div className="flex-1 flex items-center justify-center">
               <div className="bg-[#004953] rounded-lg p-6 text-center text-white w-full max-w-4xl">
                 <div className="flex items-center justify-center gap-4 mb-4">
@@ -38,35 +17,30 @@ const AdBanner = () => {
                     <Play className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold">Video B-Roll Content</h3>
-                    <p className="text-[#96abdc]">Dynamic expanding banner for promotional videos</p>
+                    <h3 className="text-xl font-bold">Football Squares Explained</h3>
+                    <p className="text-[#96abdc]">Watch how Football Squares works</p>
                   </div>
                 </div>
                 
-                {isExpanded && (
-                  <div className="mt-6 bg-black bg-opacity-30 rounded-lg p-8 animate-fade-in">
-                    <div className="text-center">
-                      <div className="w-full h-32 bg-[#708090] bg-opacity-50 rounded-lg flex items-center justify-center mb-4">
-                        <span className="text-lg font-semibold">Video Player Placeholder</span>
-                      </div>
-                      <p className="text-sm text-[#96abdc]">
-                        This area will contain your video b-roll content that showcases gameplay, 
-                        testimonials, or promotional material.
-                      </p>
+                <div className="bg-black bg-opacity-30 rounded-lg pt-1 pb-24">
+                  <div className="flex justify-center">
+                    <div className="w-80 h-80 bg-black rounded-lg overflow-hidden">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/lGv6YRlZUv4?si=T4jltJLO-Z5KgrKw&amp;clip=Ugkxj8cFVerEPTbvWsrAAqwgjZtD1UsYdZ2o&amp;clipt=EAAY6Wg&autoplay=1&mute=1&loop=1&playlist=lGv6YRlZUv4"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             </div>
-
-            {/* Control Button */}
-            <button
-              onClick={togglePlayPause}
-              className="ml-4 bg-[#ed5925] hover:bg-[#d14a1f] text-white p-3 rounded-full transition-colors duration-200"
-              aria-label={isPlaying ? 'Pause banner animation' : 'Play banner animation'}
-            >
-              {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-            </button>
           </div>
         </div>
       </div>
