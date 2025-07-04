@@ -109,6 +109,12 @@ const SidebarAds = () => {
     }
   };
 
+  const stripHtml = (html: string) => {
+    const tmp = document.createElement('DIV');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  };
+
   const adSlots = [
     {
       id: 'ad-1',
@@ -163,9 +169,12 @@ const SidebarAds = () => {
                   </h4>
                   
                   <p className="text-xs text-[#708090] leading-relaxed">
-                    {item.description.length > 100
-                      ? `${item.description.substring(0, 100)}...`
-                      : item.description}
+                    {(() => {
+                      const cleanText = stripHtml(item.description);
+                      return cleanText.length > 100
+                        ? `${cleanText.substring(0, 100)}...`
+                        : cleanText;
+                    })()}
                   </p>
                   
                   <a
@@ -231,7 +240,7 @@ const SidebarAds = () => {
             <h3 className="text-lg font-bold text-[#002244] mb-6 text-center">
               More News Streams
             </h3>
-            {[1, 2, 3, 4, 5].map((num) => (
+            {[1, 2, 3].map((num) => (
               <div
                 key={`news-stream-${num}`}
                 className="border-2 border-dashed border-[#708090] rounded-lg p-6 text-center bg-[#faf9f5] hover:bg-gray-50 transition-colors duration-200"
@@ -244,10 +253,9 @@ const SidebarAds = () => {
                     {num === 1 && 'PFF News Feed'}
                     {num === 2 && 'Razzball News Feed'}
                     {num === 3 && 'FFToday News Feed'}
-                    {num > 3 && `News Stream ${num}`}
                   </h4>
                   <p className="text-sm text-[#708090] mb-2">
-                    {num <= 3 ? 'Latest fantasy football news' : 'Live news feed placeholder'}
+                    Latest fantasy football news
                   </p>
                 </div>
                 <div className="mt-4 p-4 bg-white border border-gray-200 rounded">
@@ -255,9 +263,8 @@ const SidebarAds = () => {
                     {num === 1 && 'PFF RSS Feed'}
                     {num === 2 && 'Razzball RSS Feed'}
                     {num === 3 && 'FFToday RSS Feed'}
-                    {num > 3 && 'News Stream Content'}
                   </div>
-                  {num === 1 || num === 2 || num === 3 ? (
+                  {(
                     <div className="text-left space-y-3">
                       {loading ? (
                         <div className="flex items-center justify-center h-24">
@@ -299,9 +306,12 @@ const SidebarAds = () => {
                               </a>
                             </h5>
                             <p className="text-xs text-[#708090] leading-relaxed">
-                              {item.description.length > 80
-                                ? `${item.description.substring(0, 80)}...`
-                                : item.description}
+                              {(() => {
+                                const cleanText = stripHtml(item.description);
+                                return cleanText.length > 80
+                                  ? `${cleanText.substring(0, 80)}...`
+                                  : cleanText;
+                              })()}
                             </p>
                           </article>
                         ))
@@ -310,10 +320,6 @@ const SidebarAds = () => {
                           <span className="text-[#708090] text-sm">No news items found</span>
                         </div>
                       )}
-                    </div>
-                  ) : (
-                    <div className="w-full bg-gradient-to-br from-[#ed5925] to-[#96abdc] opacity-20 rounded h-24 flex items-center justify-center">
-                      <span className="text-[#002244] font-semibold text-sm">Your News Here</span>
                     </div>
                   )}
                 </div>

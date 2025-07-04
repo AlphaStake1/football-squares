@@ -25,7 +25,8 @@ import {
   Timer,
   Crown,
   Medal,
-  Flame
+  Flame,
+  ExternalLink
 } from 'lucide-react';
 
 const FantasyFootballContent = () => {
@@ -233,6 +234,51 @@ const FantasyFootballContent = () => {
     { term: 'Stacking', definition: 'Starting QB + WR from same team for correlated scoring' },
     { term: 'Waiver Priority', definition: 'Order in which teams can claim free agents' },
     { term: 'FLEX', definition: 'Roster spot that can be filled by RB, WR, or TE' }
+  ];
+
+  const fantasyPlatforms = [
+    {
+      name: 'ESPN Fantasy',
+      url: 'https://www.espn.com/fantasy/football/',
+      description: 'The most popular fantasy platform with comprehensive stats, expert analysis, and social features.',
+      color: 'bg-[#ed5925]',
+      logo: 'ESPN',
+    },
+    {
+      name: 'NFL Fantasy',
+      url: 'https://fantasy.nfl.com/',
+      description: 'Official NFL fantasy football with real-time scoring and exclusive NFL content and insights.',
+      color: 'bg-[#002244]',
+      logo: 'NFL',
+    },
+    {
+      name: 'Yahoo Fantasy',
+      url: 'https://football.fantasysports.yahoo.com/',
+      description: 'User-friendly interface with great mobile app and innovative features for fantasy football.',
+      color: 'bg-[#96abdc]',
+      logo: 'YAHOO',
+    },
+    {
+      name: 'Sleeper',
+      url: 'https://sleeper.com/',
+      description: 'Modern fantasy platform with social features, custom scoring, and dynasty league support.',
+      color: 'bg-[#004953]',
+      logo: 'SLEEPER',
+    },
+    {
+      name: 'CBS Sports Fantasy',
+      url: 'https://www.cbssports.com/fantasy/football/',
+      description: 'Comprehensive fantasy platform with expert advice, rankings, and detailed player analysis.',
+      color: 'bg-[#8d594d]',
+      logo: 'CBS',
+    },
+    {
+      name: 'DraftSharks',
+      url: 'https://www.draftsharks.com/',
+      description: 'Advanced fantasy tools with draft kits, rankings, and expert analysis for serious players.',
+      color: 'bg-[#708090]',
+      logo: 'SHARKS',
+    },
   ];
 
   return (
@@ -715,26 +761,53 @@ const FantasyFootballContent = () => {
           )}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-[#ed5925] to-[#96abdc] rounded-2xl p-8 lg:p-12 text-white">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Dominate Your Fantasy League?
+        {/* Fantasy Platform Selection */}
+        <div className="mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#002244] dark:text-white mb-4 transition-colors duration-300">
+              Ready to Choose Your Platform?
             </h2>
-            <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              Armed with these fundamentals and platform insights, you're ready to draft confidently, 
-              navigate waivers like a pro, and enjoy the ride to championship glory!
+            <p className="text-lg text-[#708090] dark:text-[#96abdc] max-w-2xl mx-auto transition-colors duration-300">
+              Select your preferred fantasy football platform to start your league or join existing competitions
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[#ed5925] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 inline-flex items-center gap-2">
-                <Trophy className="w-6 h-6" />
-                Start Your League
-              </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#ed5925] transition-all duration-200 inline-flex items-center gap-2">
-                <Users className="w-6 h-6" />
-                Join Community
-              </button>
-            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {fantasyPlatforms.map((platform, index) => (
+              <div
+                key={platform.name}
+                className="bg-white dark:bg-[#002244] rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden group border border-gray-200 dark:border-[#004953]"
+              >
+                {/* Header with Platform Name */}
+                <div className={`${platform.color} h-20 flex items-center justify-center`}>
+                  <div className="text-center">
+                    <div className="text-white font-bold text-lg mb-1">
+                      {platform.name}
+                    </div>
+                    <div className="text-white text-xs opacity-75 font-semibold tracking-wider">
+                      {platform.logo}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <p className="text-[#708090] dark:text-[#96abdc] mb-6 leading-relaxed transition-colors duration-300">
+                    {platform.description}
+                  </p>
+                  <a
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#ed5925] to-[#96abdc] text-white px-6 py-3 rounded-lg font-semibold hover:from-[#d14a1f] hover:to-[#7a95d1] transition-all duration-200 group-hover:scale-105 transform"
+                    aria-label={`Open ${platform.name} in new tab`}
+                  >
+                    Play Now
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
